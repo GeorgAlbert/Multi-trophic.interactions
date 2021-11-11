@@ -22,7 +22,7 @@ include("functions.jl")
 # 1. generate initial set of starting parameters and densities
 # - 30 animal and 16 producer species:
 start = startparam(30, 16)
-# - with scenario of RUD gradient (use index to specify which scenario, where 1 represents RUD = 1 and the max value represents RUD = 0)
+# - with scenario of RUD gradient (use index to specify which scenario, where 1 represents RUD = 1 and end represents RUD = 0)
 start = startparam(30, 16, nC = 16, RUDscenario = RUD(16, 16)[1])
 # - with random RUD scenario
 start = startparam(30, 16, nC = 16, RUDscenario = RUD(16, 16, random = true))
@@ -30,7 +30,7 @@ start = startparam(30, 16, nC = 16, RUDscenario = RUD(16, 16, random = true))
 
 # 2. modify staring parameters and densities
 # - replace RUD scenario while keeping everything else constant
-start = modify_startparam(start, RUD = RUD(16, 16)[16])
+start = modify_startparam(start, RUD = RUD(16, 16)[end])
 # - select producer species to keep and remove the rest
 start = modify_startparam(start, [1, 2])
 # - replace animal community, e.g. to reduce their diversity
